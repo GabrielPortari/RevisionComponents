@@ -1,12 +1,12 @@
-package com.gabrielportari.revisioncomponents
+package com.gabrielportari.revisioncomponents.activity
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.gabrielportari.revisioncomponents.R
 import com.gabrielportari.revisioncomponents.databinding.ActivityActivitiesAndFragmentBinding
 
 class ActivitiesAndFragmentActivity : AppCompatActivity() {

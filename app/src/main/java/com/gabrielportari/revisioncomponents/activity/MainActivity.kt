@@ -1,4 +1,4 @@
-package com.gabrielportari.revisioncomponents
+package com.gabrielportari.revisioncomponents.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.gabrielportari.revisioncomponents.R
 import com.gabrielportari.revisioncomponents.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -37,5 +38,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, InterfaceElementsActivity::class.java)
             startActivity(intent)
         }
+
+        /*Button para ir para a Activity de TabLayout e BottomNavigation*/
+        binding.buttonTablayoutBottomnav.setOnClickListener {
+            val intent = Intent(this, TabLayoutAndBottomNavActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

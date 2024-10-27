@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_nav_menu1"
+    android:title="Fragment 1"
+    android:icon="@drawable/ic_launcher_foreground" />
+
+    <item android:id="@+id/bottom_nav_menu2"
+        android:title="Fragment 2"
+        android:icon="@drawable/ic_launcher_foreground" />
+
+</menu>
