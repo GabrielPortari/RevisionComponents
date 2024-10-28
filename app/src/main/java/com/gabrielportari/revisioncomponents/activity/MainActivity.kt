@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
 
         /*Button para ir para a Activity de Activities e Fragments*/
         binding.buttonActivityAndFragment.setOnClickListener {
@@ -45,5 +44,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.buttonDrawerRecyclerAndList.setOnClickListener {
+            val intent = Intent(this, DrawerRecyclerAndListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
