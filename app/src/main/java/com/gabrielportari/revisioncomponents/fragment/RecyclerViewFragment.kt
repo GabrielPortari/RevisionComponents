@@ -16,7 +16,6 @@ import kotlin.random.Random
 class RecyclerViewFragment : Fragment() {
 
     private var _binding: FragmentRecyclerViewBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -34,14 +33,9 @@ class RecyclerViewFragment : Fragment() {
         /*Inicio da criação da recycler view*/
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         /*Criação dos dados*/
-        val users = List(10){generateRandomUser()}
+        val users = List(30){generateRandomUser()}
         val adapter = UserAdapter(users)
         binding.recyclerView.adapter = adapter
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     fun generateRandomUser(): User {
@@ -50,8 +44,13 @@ class RecyclerViewFragment : Fragment() {
 
         val name = names.random()
         val email = "$name@${domains.random()}"
-        val age = Random.nextInt(18, 65) // Idade entre 18 e 65 anos
+        val phone = "+55 (11) 9${Random.nextInt(10000000, 99999999)}"
 
-        return User(name, email, age)
+        return User(name, email, phone)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

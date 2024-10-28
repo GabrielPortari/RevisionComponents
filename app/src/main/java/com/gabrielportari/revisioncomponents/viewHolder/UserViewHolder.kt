@@ -10,6 +10,6 @@ class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(user: User){
         itemView.findViewById<TextView>(R.id.text_user_email).text = user.email
         itemView.findViewById<TextView>(R.id.text_user_name).text = user.name
-        itemView.findViewById<TextView>(R.id.text_user_age).text = user.age.toString()
+        itemView.findViewById<TextView>(R.id.text_user_phone).text = user.phone
     }
 }

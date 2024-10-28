@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -31,20 +32,27 @@ class DrawerRecyclerAndListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* Criação do navigation drawer */
-        actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.nav_open, R.string.nav_close)
-        binding.drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.main, R.string.nav_open, R.string.nav_close)
+        binding.main.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
+        /* Criação da toolbar */
+        setSupportActionBar(binding.materialToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        replaceFragment(RecyclerViewFragment()) // seleciona o fragment inicial
         /* click listener do navigation drawer */
+
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.nav_show_list -> {
                     replaceFragment(ListViewFragment())
+                    binding.main.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_show_recycler -> {
                     replaceFragment(RecyclerViewFragment())
+                    binding.main.closeDrawer(GravityCompat.START)
                     true
                 }
                 else -> false

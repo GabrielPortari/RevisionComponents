@@ -5,56 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import com.gabrielportari.revisioncomponents.R
+import com.gabrielportari.revisioncomponents.databinding.FragmentListViewBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class ListViewFragment : Fragment(){
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ListViewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ListViewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentListViewBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_view, container, false)
+    ): View {
+        _binding = FragmentListViewBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ListViewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ListViewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val games = generateGames()
+        val listAdapter : ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, games)
+        binding.listView.adapter = listAdapter
+
+    }
+
+    private fun generateGames() : Array<String> {
+        return arrayOf("The Legend of Zelda", "Super Mario Bros.", "Minecraft", "Fortnite", "Apex Legends", "League of Legends", "Counter-Strike", "Call of Duty", "Assassin's Creed", "Overwatch", "Grand Theft Auto", "Red Dead Redemption", "World of Warcraft", "Final Fantasy", "The Witcher", "Cyberpunk 2077", "Halo", "God of War", "Uncharted", "Doom", "Dark Souls", "Bloodborne", "Sekiro", "Elden Ring", "Resident Evil", "Silent Hill", "Metal Gear Solid", "Street Fighter", "Mortal Kombat", "Tekken", "Splatoon", "Animal Crossing", "Pokémon", "Monster Hunter", "Fall Guys", "Among Us", "PUBG", "Rocket League", "Valorant", "Destiny", "Borderlands", "Far Cry", "Just Cause", "Hitman", "Tomb Raider", "Horizon Zero Dawn", "Ghost of Tsushima", "Persona", "Yakuza")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
