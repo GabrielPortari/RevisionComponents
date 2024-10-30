@@ -44,8 +44,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        /*Button para ir para a Activity de Drawer Layout, RecyclerView e ListView*/
         binding.buttonDrawerRecyclerAndList.setOnClickListener {
             val intent = Intent(this, DrawerRecyclerAndListActivity::class.java)
+            startActivity(intent)
+        }
+
+        /*Button para ir para a Activity de Shared Preferences, Datastore, ROOM e Files*/
+        binding.buttonSharedPrefRoomDatastoreFiles.setOnClickListener {
+            val intent = Intent(this, SharedPreferencesROOMDatastoreFilesActivity::class.java)
             startActivity(intent)
         }
     }

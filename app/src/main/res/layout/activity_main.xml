@@ -50,5 +50,14 @@
         android:layout_marginEnd="16dp"
         android:text="Drawer Layout, RecyclerView and ListView" />
 
+    <Button
+        android:id="@+id/button_shared_pref_room_datastore_files"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Shared Preferences, Datastore, ROOM, Files" />
+
 
 </LinearLayout>

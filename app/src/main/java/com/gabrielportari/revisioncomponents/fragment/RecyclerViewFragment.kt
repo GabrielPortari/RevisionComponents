@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gabrielportari.revisioncomponents.R
 import com.gabrielportari.revisioncomponents.adapter.UserAdapter
 import com.gabrielportari.revisioncomponents.databinding.FragmentRecyclerViewBinding
-import com.gabrielportari.revisioncomponents.databinding.FragmentSecondBinding
-import com.gabrielportari.revisioncomponents.model.User
+import com.gabrielportari.revisioncomponents.model.UserData
 import kotlin.random.Random
 
 class RecyclerViewFragment : Fragment() {
@@ -38,7 +36,7 @@ class RecyclerViewFragment : Fragment() {
         binding.recyclerView.adapter = adapter
     }
 
-    fun generateRandomUser(): User {
+    fun generateRandomUser(): UserData {
         val names = listOf("Alice", "Bob", "Carol", "David", "Eve", "Frank", "Grace", "Henry", "Isabella", "Jack")
         val domains = listOf("example.com", "gmail.com", "yahoo.com")
 
@@ -46,7 +44,7 @@ class RecyclerViewFragment : Fragment() {
         val email = "$name@${domains.random()}"
         val phone = "+55 (11) 9${Random.nextInt(10000000, 99999999)}"
 
-        return User(name, email, phone)
+        return UserData(name, email, phone)
     }
 
     override fun onDestroyView() {
