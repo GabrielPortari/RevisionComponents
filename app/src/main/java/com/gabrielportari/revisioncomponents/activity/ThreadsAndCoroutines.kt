@@ -63,6 +63,10 @@ class ThreadsAndCoroutines : AppCompatActivity() {
             }
         }
 
+
+        /*O uso de coroutines é recomendado sempre, pois são mais eficientes
+         e menos custosas em termos de recursos do dispositivo que as threads*/
+
         /* Iniciar a coroutine */
         binding.buttonCoroutineStart.setOnClickListener {
             executeCoroutine = true
