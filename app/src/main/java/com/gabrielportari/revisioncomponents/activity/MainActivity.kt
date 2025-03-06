@@ -55,5 +55,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SharedPreferencesROOMDatastoreFilesActivity::class.java)
             startActivity(intent)
         }
+
+        /*Button para ir para a Activity de Threads e Coroutines*/
+        binding.buttonThreadsCoroutines.setOnClickListener {
+            val intent = Intent(this, ThreadsAndCoroutines::class.java)
+            startActivity(intent)
+        }
     }
 }

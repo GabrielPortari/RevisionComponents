@@ -116,6 +116,7 @@ class SharedPreferencesROOMDatastoreFilesActivity : AppCompatActivity() {
                 preferencesDataStore[prefName] ?: ""
             }
         }
+
         binding.buttonSaveFiles.setOnClickListener {
             /* recuperar dado dos inputs de texto */
             val name = binding.textInputName.text.toString()
