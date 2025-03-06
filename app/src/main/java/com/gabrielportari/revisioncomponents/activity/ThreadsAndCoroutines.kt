@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import java.lang.Thread.sleep
 
 class ThreadsAndCoroutines : AppCompatActivity() {
@@ -75,6 +76,10 @@ class ThreadsAndCoroutines : AppCompatActivity() {
         /* Iniciar a coroutine */
         binding.buttonCoroutineStart.setOnClickListener {
             job = CoroutineScope(Dispatchers.IO).launch {
+                /*withTimeout(30000L){ // define um tempo limite para a coroutine executar em milisegundos
+                    execute()
+                } */
+
                 execute()
             }
         }
