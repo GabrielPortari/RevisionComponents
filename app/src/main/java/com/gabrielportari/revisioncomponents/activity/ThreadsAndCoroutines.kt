@@ -9,6 +9,7 @@ import com.gabrielportari.revisioncomponents.R
 import com.gabrielportari.revisioncomponents.databinding.ActivityThreadsAndCoroutinesBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -16,10 +17,14 @@ import java.lang.Thread.sleep
 
 class ThreadsAndCoroutines : AppCompatActivity() {
     private lateinit var binding: ActivityThreadsAndCoroutinesBinding
+
     private var executeThread: Boolean = false
-    private var executeCoroutine: Boolean = false
+
     private var counterThread: Int = 0
     private var counterCoroutine: Int = 0
+
+    private var job: Job? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -69,33 +74,29 @@ class ThreadsAndCoroutines : AppCompatActivity() {
 
         /* Iniciar a coroutine */
         binding.buttonCoroutineStart.setOnClickListener {
-            executeCoroutine = true
-            CoroutineScope(Dispatchers.IO).launch {
-                while(executeCoroutine){
-
-                    if(!executeCoroutine){
-                        return@launch // Condicional para parar a coroutine
-                    }
-
-                    val str =  "Coroutine Counter: $counterCoroutine"
-
-                    withContext(Dispatchers.Main) {
-                        binding.textCoroutineCounter.text = str
-                        binding.buttonCoroutineStart.isEnabled = false
-                    }
-
-                    counterCoroutine++
-                    delay(1000)
-                }
+            job = CoroutineScope(Dispatchers.IO).launch {
+                execute()
             }
         }
 
         /* Parar a coroutine */
         binding.buttonCoroutineStop.setOnClickListener {
-            executeCoroutine = false
+            job?.cancel()
             if(!binding.buttonCoroutineStart.isEnabled){
                 binding.buttonCoroutineStart.isEnabled = true
             }
+        }
+    }
+
+    private suspend fun execute(){
+        while(true){
+            val str =  "Coroutine Counter: $counterCoroutine"
+            withContext(Dispatchers.Main) {
+                binding.textCoroutineCounter.text = str
+                binding.buttonCoroutineStart.isEnabled = false
+            }
+            counterCoroutine++
+            delay(1000)
         }
     }
 }
